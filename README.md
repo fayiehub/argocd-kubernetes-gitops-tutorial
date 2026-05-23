@@ -1,14 +1,13 @@
-# Argocd Kubernetes Gitops Tutorial
+# Argocd Kubernetes GitOps
 
-This repo contains all the code needed to follow along with our **[YouTube Tutorial](https://youtu.be/yj4O0wwkMQI)** or **[Written Article](https://rslim087a.github.io/rayanslim/lesson.html?course=argocd-gitops-course&lesson=introduction)**.
+Setup and testing instructions for deploying ArgoCD on Kubernetes and managing applications with GitOps.
 
 ## Prerequisites
 
-To follow along with this tutorial, you'll need:
-
-- kubectl installed and configured ([https://youtu.be/IBkU4dghY0Y](https://youtu.be/IBkU4dghY0Y))
-- Helm installed: [https://rslim087a.github.io/rayanslim/lesson.html?course=prometheus-grafana-monitoring-course&lesson=helm-installation](https://rslim087a.github.io/rayanslim/lesson.html?course=prometheus-grafana-monitoring-course&lesson=helm-installation)
-- A GitHub account: ([https://github.com/](https://github.com/))
+- kubectl installed and configured
+- Helm installed
+- A Kubernetes cluster
+- A GitHub account
 
 ## Install ArgoCD on your Cluster
 ```
@@ -30,9 +29,9 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-## API Calls
+## Testing
 
-Here are commands that you can use to add grades to the Grade Submission API. **Windows Users should use Git Bash**.
+Use the following commands to test the Grade Submission API. **Windows users should use Git Bash**.
 
 ```bash
 curl -X POST http://localhost:<port>/grades \
@@ -48,11 +47,7 @@ curl -X POST http://localhost:<port>/grades \
   -d '{"name": "Hermione", "subject": "Potions", "score": 98}'
 ```
 
-To verify, you can get all grades with:
+Verify the grades were added:
 ```bash
 curl http://localhost:<port>/grades
 ```
-
-## Become a Cloud and DevOps Engineer
-
-Learn every tool that matters: [https://rslim087a.github.io/rayanslim](https://rslim087a.github.io/rayanslim)
